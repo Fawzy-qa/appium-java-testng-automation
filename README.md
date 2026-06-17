@@ -1,1 +1,1 @@
-# appium-java-testng-framework
+# appium-java-testng-automation
