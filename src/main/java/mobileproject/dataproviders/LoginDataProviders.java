@@ -10,11 +10,11 @@ public class LoginDataProviders {
 
     @DataProvider(name = "negativeLoginData")
     public static Object[][] getNegativeData() {
-        return JsonReader.getJsonData("src/test/resources/testdata/loginData.json", "negativeScenarios");
+        return JsonReader.getJsonData("src/test/resources/testdata/loginData.json", "negativeScenario");
     }
 
     @DataProvider(name = "positiveLoginData")
     public static Object[][] getPositiveData() {
-        return JsonReader.getJsonData("src/test/resources/testdata/loginData.json", "positiveScenarios");
+        return JsonReader.getJsonData("src/test/resources/testdata/loginData.json", "positiveScenario");
     }
 }

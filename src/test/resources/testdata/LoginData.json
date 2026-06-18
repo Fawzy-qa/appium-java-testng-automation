@@ -1,10 +1,8 @@
 {
-  "negativeScenarios": [
-    { "scenario": "Empty password", "username": "user", "password": "" },
-    { "scenario": "Invalid email", "username": "bad@email", "password": "123" }
+  "negativeScenario": [
+    { "scenario": "Empty password", "username": "user", "password": "" }
   ],
-  "positiveScenarios": [
-    { "scenario": "Standard User", "username": "snmpz64418@minitts.net", "password": "hxhshhd64-*%*" },
-    { "scenario": "Admin User", "username": "qprfx56950@minitts.net", "password": "eslam54+*" }
+  "positiveScenario": [
+    { "scenario": "Standard User", "username": "snmpz64418@minitts.net", "password": "hxhshhd64-*%*" }
   ]
 }

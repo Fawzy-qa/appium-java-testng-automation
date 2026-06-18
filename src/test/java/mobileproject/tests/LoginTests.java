@@ -10,16 +10,19 @@ public class LoginTests extends BaseTest {
 
     // Test 1: The Negative Path (Expected to stay on Login screen and show error)
     @Test(priority = 1,dataProvider = "negativeLoginData",dataProviderClass = LoginDataProviders.class, description = "Verify user cannot login with invalid credentials")
-    public void testInvalidLoginFails() {
+    public void testInvalidLoginFails(String scenario, String username, String password) {
 
-        System.out.println("--- Starting Test: testInvalidLoginFails ---");
+// 1. Inject the scenario name directly into your console logs or Allure reports
+        System.out.println("==========================================");
+        System.out.println("Executing Scenario: [" + scenario + "]");
+        System.out.println("Testing credentials -> User: " + username);
 
         // 1. Initialize the Page Object
         LoginPage loginPage = new LoginPage(driver);
 
         // 2. Execute the action
-        loginPage.enterUsername("username")
-                .enterPassword("password")
+        loginPage.enterUsername(username)
+                .enterPassword(password)
                 .tapLoginButton();
 
         // 3. Assert the outcome
@@ -29,15 +32,18 @@ public class LoginTests extends BaseTest {
 
     // Test 2: The Positive Path (Expected to log in successfully)
     @Test(priority = 2,dataProvider = "positiveLoginData",dataProviderClass = LoginDataProviders.class, description = "Verify user can login successfully with valid credentials")
-    public void testSuccessfulLogin() {
+    public void testSuccessfulLogin(String scenario, String username, String password) {
 
-        System.out.println("--- Starting Test: testSuccessfulLogin ---");
+        // 1. Inject the scenario name directly into your console logs or Allure reports
+        System.out.println("==========================================");
+        System.out.println("Executing Scenario: [" + scenario + "]");
+        System.out.println("Testing credentials -> User: " + username);
 
         LoginPage loginPage = new LoginPage(driver);
 
         // Replace these strings with a real username and password for your app
-        loginPage.enterUsername("username")
-                .enterPassword("password")
+        loginPage.enterUsername(username)
+                .enterPassword(password)
                 .tapLoginButton();
 
         /*

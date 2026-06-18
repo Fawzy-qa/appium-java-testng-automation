@@ -37,6 +37,7 @@ public class BasePage {
 
     protected void enterText(WebElement element, String text) {
         waitForVisibility(element);
+        element.click();
         element.clear();
         element.sendKeys(text);
     }
