@@ -13,6 +13,10 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.Properties;
 
+import mobileproject.utils.ScreenshotListener;
+import org.testng.annotations.Listeners;
+
+@Listeners(ScreenshotListener.class)
 public class BaseTest {
 
     protected AppiumDriver driver;

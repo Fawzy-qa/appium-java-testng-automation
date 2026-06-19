@@ -47,48 +47,49 @@ public class AndroidActions {
     }
 
     /**
-     * Smart Scroll: Swipes down repeatedly until the target element is visible.
-     * If not found below, returns to start and swipes up.
+     * Peek Scroll: Checks current view, scrolls down once to check below,
+     * then scrolls up to check above.
      */
-    public static void scrollUntilVisible(AppiumDriver driver, WebElement element, int maxSwipes) {
-        int swipeCount = 0;
-
-        // 1. SEARCH DOWN (original behavior)
-        while (swipeCount < maxSwipes) {
-            try {
-                if (element.isDisplayed()) {
-                    System.out.println("Element found after " + swipeCount + " down swipes.");
-                    return;
-                }
-            } catch (Exception e) {
-                // Element not in DOM yet, keep scrolling
+    public static void scrollDownThenUp(AppiumDriver driver, WebElement element) {
+        // 1. Check if it is already visible on the screen
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Element is already visible.");
+                return;
             }
-            scrollDown(driver);
-            swipeCount++;
+        } catch (Exception e) {
+            // Not visible yet
         }
 
-        // 2. RETURN TO STARTING POSITION so we can search upward
-        System.out.println("Element not found below. Returning to top to search upward...");
-        for (int i = 0; i < maxSwipes; i++) {
-            scrollUp(driver);
-        }
-
-        // 3. SEARCH UP
-        swipeCount = 0;
-        while (swipeCount < maxSwipes) {
-            try {
-                if (element.isDisplayed()) {
-                    System.out.println("Element found after " + swipeCount + " up swipes.");
-                    return;
-                }
-            } catch (Exception e) {
-                // Element not in DOM yet, keep scrolling
+        // 2. Scroll DOWN once and check
+        System.out.println("Element not visible. Scrolling DOWN once...");
+        scrollDown(driver);
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Element found after scrolling down.");
+                return;
             }
-            scrollUp(driver);
-            swipeCount++;
+        } catch (Exception e) {
+            // Not visible below
         }
 
-        throw new RuntimeException("Element not found after " + maxSwipes + " down and " + maxSwipes + " up swipes.");
+        // 3. Scroll UP to check above.
+        // (We scroll up TWICE: once to undo the down-scroll, and once to actually go higher)
+        System.out.println("Element not found below. Scrolling UP to check above...");
+        scrollUp(driver); // Returns to the original starting position
+        scrollUp(driver); // Moves higher up the page
+
+        try {
+            if (element.isDisplayed()) {
+                System.out.println("Element found after scrolling up.");
+                return;
+            }
+        } catch (Exception e) {
+            // Not visible above
+        }
+
+        // 4. If we reach this point, the element is completely missing from this area
+        throw new RuntimeException("Element not found after checking just below and just above the current view.");
     }
 
 

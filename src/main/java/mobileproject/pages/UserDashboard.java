@@ -97,10 +97,9 @@ public class UserDashboard extends BasePage {
         return this;
     }
 
-    public UserDashboard tapSubmitRequest() {
-        AndroidActions.scrollDown(driver);
+    public void tapSubmitRequest() {
+        AndroidActions.scrollDownThenUp(driver, submitRequestBtn);
         click(submitRequestBtn);
-        return this;
     }
 
 
@@ -123,7 +122,6 @@ public class UserDashboard extends BasePage {
     }
 
     public SettingsPage tapSettingsTab() {
-        click(settingsTab);
         return new SettingsPage(driver);
     }
 

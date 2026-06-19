@@ -19,7 +19,7 @@ public class MyRequestsPage extends BasePage {
     // --- LOCATORS ---
 
     // Using the exact UiSelector you provided. Notice the escaped newline (\n) and quotes (\").
-    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"Spare parts Tab 1 of 4\")")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Spare parts Tab 1 of 4\"]")
     private WebElement sparePartsTab;
 
     // Assuming accessibility ID. Update if it uses UiAutomator instead!

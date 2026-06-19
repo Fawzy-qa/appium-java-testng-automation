@@ -127,7 +127,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage tapCreateAccountLink() {
-        AndroidActions.scrollUntilVisible(driver, createAccountLink, 3);
+        AndroidActions.scrollDownThenUp(driver, createAccountLink);
         click(createAccountLink);
         return this;
     }
