@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import mobileproject.base.BasePage;
+import mobileproject.utils.AndroidActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -32,6 +33,8 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(accessibility = "Email or password is incorrect.")
     private WebElement errorMessage;
 
+    @AndroidFindBy(accessibility = "Password is required")
+    private WebElement passwordRequiredError;
 
 
     public LoginPage enterUsername(String username) {
@@ -44,8 +47,17 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public LoginPage hideKeyboard() {
+        AndroidActions.hideKeyboard(driver);
+        return this; // Returns the page so the chain can continue
+    }
+
     public void tapLoginButton() {
         click(loginButton);
+    }
+
+    public boolean isPasswordRequiredErrorDisplayed() {
+        return isDisplayed(passwordRequiredError);
     }
 
     public boolean isErrorMessageDisplayed() {

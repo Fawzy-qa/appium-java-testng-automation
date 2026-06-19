@@ -1,8 +1,8 @@
 {
   "negativeScenario": [
-    { "scenario": "Empty password", "username": "user", "password": "" }
+    { "scenario": "Empty password", "email": "user@gmail.com", "password": "" }
   ],
   "positiveScenario": [
-    { "scenario": "Standard User", "username": "snmpz64418@minitts.net", "password": "hxhshhd64-*%*" }
+    { "scenario": "Standard User", "email": "snmpz64418@minitts.net", "password": "hxhshhd64-*%*" }
   ]
 }

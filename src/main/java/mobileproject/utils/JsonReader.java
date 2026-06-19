@@ -25,7 +25,7 @@ public class JsonReader {
                 JsonObject obj = jsonArray.get(i).getAsJsonObject();
                 // Extracting the keys. (If you have tests with 3 parameters later, you'd add a data[i][2] here)
                 data[i][0] = obj.get("scenario").getAsString();
-                data[i][1] = obj.get("username").getAsString();
+                data[i][1] = obj.get("email").getAsString();
                 data[i][2] = obj.get("password").getAsString();
 
             }
