@@ -1,0 +1,47 @@
+{
+  "validSparePartData": [
+    {
+      "scenario": "Standard Spare Part Request",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*",
+      "partName": "Brake Pads"
+    }
+  ],
+  "invalidSparePartData": [
+    {
+      "scenario": "Invalid Spare Part Name",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*",
+      "partName": "2"
+    }
+  ],
+  "validWorkshopData": [
+    {
+      "scenario": "Standard Workshop Request",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*"
+    }
+  ],
+  "duplicateWorkshopData": [
+    {
+      "scenario": "Duplicate Workshop Request Rejection",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*"
+    }
+  ],
+  "cancelSparePartData": [
+    {
+      "scenario": "Cancel Spare Part Request Successfully",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*"
+    }
+  ],
+  "invalidChangePasswordData": [
+    {
+      "scenario": "Change Password Too Short",
+      "email": "snmpz64418@minitts.net",
+      "password": "hxhshhd64-*%*",
+      "newPassword": "123"
+    }
+  ]
+}

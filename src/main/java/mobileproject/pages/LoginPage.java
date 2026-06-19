@@ -23,22 +23,59 @@ public class LoginPage extends BasePage {
     private WebElement usernameField;
 
 
+    @AndroidFindBy(accessibility = "Don’t have an account? Create one")
+    private WebElement createAccountLink;
+
+    @AndroidFindBy(accessibility = "Email or password is incorrect.")
+    private WebElement invalidCredentialsError;
+
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").instance(1)")
     private WebElement passwordField;
 
+    @AndroidFindBy(uiAutomator = "new UiSelector().description(\"اختر اللغة - العربية\n" +
+            "\uD83C\uDDF8\uD83C\uDDE6\n" +
+            "العربية\")")
+    private  WebElement languageArabic;
+
+    // Using uiAutomator because there is no acc id or res id
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").text(\"البريد الإلكتروني\")")
+    private  WebElement emailArabic;
+
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.EditText\").text(\"كلمة المرور\")")
+    private  WebElement passwordArabic;
 
     @AndroidFindBy(accessibility = "Log in")
     private WebElement loginButton;
 
     @AndroidFindBy(accessibility = "Email or password is incorrect.")
-    private WebElement errorMessage;
+    private  WebElement errorMessage;
 
     @AndroidFindBy(accessibility = "Password is required")
-    private WebElement passwordRequiredError;
+    private  WebElement passwordRequiredError;
+
+    @AndroidFindBy(accessibility = "نسيت كلمة المرور؟")
+    private  WebElement forgotPass;
+
+    @AndroidFindBy(accessibility = "تسجيل الدخول")
+    private  WebElement loginMsg;
+
+    @AndroidFindBy(accessibility = "دخول كوحدة خدمة (باركود)")
+    private  WebElement loginAsUnit;
 
 
-    public LoginPage enterUsername(String username) {
-        enterText(usernameField, username);
+    @AndroidFindBy(accessibility = "ليس لديك حساب؟ إنشاء حساب")
+    private  WebElement accountRegister;
+
+    @AndroidFindBy(accessibility = "التسجيل كمندوب (رفع مستمسكات)")
+    private  WebElement deliveryRegister;
+
+    @AndroidFindBy(accessibility = "اختر اللغة")
+    private  WebElement langChoice;
+
+
+    public LoginPage enterUsername(String email) {
+        enterText(usernameField, email);
         return this;
     }
 
@@ -56,10 +93,51 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
+    public void selectArabicLanguage() {
+        click(languageArabic);
+    }
+
+    public  boolean isLangChosenArabic() {
+        return isDisplayed(langChoice);
+    }
+    public  boolean isDeliveryRegisterArabic() {
+        return isDisplayed(deliveryRegister);
+    }
+    public  boolean isAccountRegisterArabic() {
+        return isDisplayed(accountRegister);
+    }
+    public  boolean isLoginAsUnitArabic() {
+        return isDisplayed(loginAsUnit);
+    }
+    public  boolean isLoginMsgArabic() {
+        return isDisplayed(loginMsg);
+    }
+    public  boolean isForgotPassArabic() {
+        return isDisplayed(forgotPass);
+    }
+
+    public boolean isPasswordArabic() {
+        return isDisplayed(passwordArabic);
+    }
+    public boolean isEmailArabic() {
+        return isDisplayed(emailArabic);
+    }
+    public boolean isLanguageArabic() {
+        return isDisplayed(languageArabic);
+    }
+
+    public LoginPage tapCreateAccountLink() {
+        AndroidActions.scrollUntilVisible(driver, createAccountLink, 3);
+        click(createAccountLink);
+        return this;
+    }
     public boolean isPasswordRequiredErrorDisplayed() {
         return isDisplayed(passwordRequiredError);
     }
 
+    public boolean isInvalidCredentialsErrorDisplayed() {
+        return isDisplayed(invalidCredentialsError);
+    }
     public boolean isErrorMessageDisplayed() {
         return isDisplayed(errorMessage);
     }

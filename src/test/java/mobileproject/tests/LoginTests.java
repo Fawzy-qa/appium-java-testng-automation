@@ -3,8 +3,10 @@ package mobileproject.tests;
 import mobileproject.base.BaseTest;
 import mobileproject.dataproviders.LoginDataProviders;
 import mobileproject.pages.LoginPage;
+import mobileproject.pages.UserDashboard;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class LoginTests extends BaseTest {
 
@@ -31,8 +33,57 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(isErrorShown, "Test Failed: The error message did not appear after a bad login attempt.");
     }
 
+    @Test(priority = 2, dataProvider = "invalidCredentialsData", dataProviderClass = LoginDataProviders.class, description = "Verify error message when login credentials are structurally valid but incorrect")
+    public void testInvalidCredentialsFails(String scenario, String email, String password) {
+
+        System.out.println("==========================================");
+        System.out.println("Executing Scenario: [" + scenario + "]");
+        System.out.println("Testing credentials -> Email: " + email);
+
+        LoginPage loginPage = new LoginPage(driver);
+
+        // Execute the login flow
+        loginPage.enterUsername(email)
+                .enterPassword(password)
+                .hideKeyboard()
+                .tapLoginButton();
+
+        // Assert the specific error message appears
+        boolean isErrorShown = loginPage.isInvalidCredentialsErrorDisplayed();
+
+        Assert.assertTrue(isErrorShown,
+                "Test Failed: The 'Email or password is incorrect.' error message did not appear.");
+    }
+
+    @Test(priority = 3,dataProvider = "langChoice",dataProviderClass = LoginDataProviders.class, description = "Verify that arabic language are displayed correctly")
+    public void testArabicLang(String scenario) {
+
+        // 1. Inject the scenario name directly into your console logs or Allure reports
+        System.out.println("==========================================");
+        System.out.println("Executing Scenario: [" + scenario + "]");;
+
+        LoginPage loginPage = new LoginPage(driver);
+
+        // Replace these strings with a real username and password for your app
+        loginPage.selectArabicLanguage();
+
+        SoftAssert softAssert = new SoftAssert();
+
+        // All of these must be called on the INSTANCE, not the class
+        softAssert.assertTrue(loginPage.isLangChosenArabic(), "Language choice text is missing!");
+        softAssert.assertTrue(loginPage.isDeliveryRegisterArabic(), "Delivery register text is missing!");
+        softAssert.assertTrue(loginPage.isAccountRegisterArabic(), "Account register text is missing!");
+        softAssert.assertTrue(loginPage.isLanguageArabic(), "Language text is missing!");
+        softAssert.assertTrue(loginPage.isEmailArabic(), "Email text is missing!");
+        softAssert.assertTrue(loginPage.isPasswordArabic(), "Password text is missing!");
+        softAssert.assertTrue(loginPage.isLoginAsUnitArabic(), "Login as unit text is missing!");
+        softAssert.assertTrue(loginPage.isLoginMsgArabic(), "Login message is missing!");
+        softAssert.assertTrue(loginPage.isForgotPassArabic(), "Forgot password text is missing!");
+
+        softAssert.assertAll();
+    }
     // Test 2: The Positive Path (Expected to log in successfully)
-    @Test(priority = 2,dataProvider = "positiveLoginData",dataProviderClass = LoginDataProviders.class, description = "Verify user can login successfully with valid credentials")
+    @Test(priority = 4,dataProvider = "positiveLoginData",dataProviderClass = LoginDataProviders.class, description = "Verify user can login successfully with valid credentials")
     public void testSuccessfulLogin(String scenario, String email, String password) {
 
         // 1. Inject the scenario name directly into your console logs or Allure reports
@@ -48,13 +99,11 @@ public class LoginTests extends BaseTest {
                 .hideKeyboard()
                 .tapLoginButton();
 
-        /*
-         * 4. Next Step Assertion:
-         * Once the login is successful, the app will transition to a new screen (e.g., Home or Dashboard).
-         * To assert this worked, you would eventually create a HomePage.java object and verify a UI element there.
-         * * Example:
-         * HomePage homePage = new HomePage(driver);
-         * Assert.assertTrue(homePage.isProfileIconDisplayed(), "Test Failed: Did not navigate to Home Screen.");
-         */
+        UserDashboard userPage = new UserDashboard(driver);
+        SoftAssert softAssert = new SoftAssert();
+
+        // Verify the main header loaded
+        softAssert.assertTrue(userPage.isUserDashboardHeaderDisplayed(), "Dashboard header is missing!");
+
     }
 }

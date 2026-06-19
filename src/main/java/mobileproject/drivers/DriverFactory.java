@@ -30,6 +30,7 @@ public class DriverFactory {
                     androidOptions.setDeviceName(config.getProperty("device.name")); // e.g., Poco X3
                     androidOptions.setAppPackage(config.getProperty("app.package"));
                     androidOptions.setAppActivity(config.getProperty("app.activity"));
+                    androidOptions.setCapability("autoGrantPermissions", true);
 
                     // Recommended for physical device testing: Ensures app state resets cleanly between test suites
                     androidOptions.setNoReset(false);

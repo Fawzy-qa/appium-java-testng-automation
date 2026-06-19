@@ -4,5 +4,15 @@
   ],
   "positiveScenario": [
     { "scenario": "Standard User", "email": "snmpz64418@minitts.net", "password": "hxhshhd64-*%*" }
+  ],
+  "langChoice": [
+    { "scenario": "Arabic Lang" }
+  ],
+  "invalidCredentialsData": [
+    {
+      "scenario": "Structurally Valid but Incorrect Credentials",
+      "email": "wrongemail@domain.com",
+      "password": "WrongPassword123!"
+    }
   ]
 }

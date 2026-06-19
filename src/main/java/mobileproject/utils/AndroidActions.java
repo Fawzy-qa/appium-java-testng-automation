@@ -42,7 +42,57 @@ public class AndroidActions {
 
         // 5. Tell the driver to execute the sequence
         driver.perform(Collections.singletonList(swipe));
+
+
     }
+
+    /**
+     * Smart Scroll: Swipes down repeatedly until the target element is visible.
+     * If not found below, returns to start and swipes up.
+     */
+    public static void scrollUntilVisible(AppiumDriver driver, WebElement element, int maxSwipes) {
+        int swipeCount = 0;
+
+        // 1. SEARCH DOWN (original behavior)
+        while (swipeCount < maxSwipes) {
+            try {
+                if (element.isDisplayed()) {
+                    System.out.println("Element found after " + swipeCount + " down swipes.");
+                    return;
+                }
+            } catch (Exception e) {
+                // Element not in DOM yet, keep scrolling
+            }
+            scrollDown(driver);
+            swipeCount++;
+        }
+
+        // 2. RETURN TO STARTING POSITION so we can search upward
+        System.out.println("Element not found below. Returning to top to search upward...");
+        for (int i = 0; i < maxSwipes; i++) {
+            scrollUp(driver);
+        }
+
+        // 3. SEARCH UP
+        swipeCount = 0;
+        while (swipeCount < maxSwipes) {
+            try {
+                if (element.isDisplayed()) {
+                    System.out.println("Element found after " + swipeCount + " up swipes.");
+                    return;
+                }
+            } catch (Exception e) {
+                // Element not in DOM yet, keep scrolling
+            }
+            scrollUp(driver);
+            swipeCount++;
+        }
+
+        throw new RuntimeException("Element not found after " + maxSwipes + " down and " + maxSwipes + " up swipes.");
+    }
+
+
+
 
     /**
      * Performs a Long Press on a specific element.
@@ -69,19 +119,29 @@ public class AndroidActions {
     /**
      * Helper method for a standard "Scroll Down" (swiping from bottom to top)
      */
+    /**
+     * Standard "Scroll Down" (swiping from bottom to top to reveal lower content)
+     */
     public static void scrollDown(AppiumDriver driver) {
-        // Starts at 80% down the screen, swipes up to 20% near the top, staying dead center horizontally (50%)
         scroll(driver, 0.5, 0.8, 0.5, 0.2);
+    }
+
+    /**
+     * Standard "Scroll Up" (swiping from top to bottom to reveal upper content)
+     */
+    public static void scrollUp(AppiumDriver driver) {
+        scroll(driver, 0.5, 0.2, 0.5, 0.8);
     }
     public static void hideKeyboard(AppiumDriver driver) {
         try {
             AndroidDriver androidDriver = (AndroidDriver) driver;
             if (androidDriver.isKeyboardShown()) {
                 androidDriver.hideKeyboard();
-                System.out.println("Keyboard was blocking the UI and has been hidden.");
+                Thread.sleep(500); // Wait for keyboard slide-down animation
+                System.out.println("Keyboard hidden.");
             }
         } catch (Exception e) {
-            System.out.println("Keyboard was not present or already hidden.");
+            System.out.println("Keyboard not present or already hidden.");
         }
     }
 }
