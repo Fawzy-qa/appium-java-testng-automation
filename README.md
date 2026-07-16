@@ -2,6 +2,13 @@
 
 A robust, scalable, and data-driven mobile automation framework built for Android applications using **Java**, **Appium**, and **TestNG**. This framework implements the **Page Object Model (POM)** design pattern and features comprehensive reporting via **Allure**.
 
+
+## 🎥 Project Demo
+
+Click the GIF below to watch the full, high-quality demonstration on Google Drive:
+
+[![Demo Preview](assets/demo-preview.gif)](https://drive.google.com/file/d/1f1vxeCIlBMpcRrL2EaELSf9EC6Ff0BiW/view?usp=sharing)
+
 ## 🛠️ Tech Stack
 
 * **Language:** Java 17+
