@@ -5,13 +5,10 @@ A robust, scalable, and data-driven mobile automation framework built for Androi
 
 ## 🎥 Project Demo
 
-Click the GIF below to watch the full, high-quality demonstration on Google Drive:
-
-<br>
-
-<a href="https://drive.google.com/file/d/1f1vxeCIlBMpcRrL2EaELSf9EC6Ff0BiW/view?usp=sharing" target="_blank">
-  <img src="assets/demo-preview.gif" alt="Watch the Demo" width="600" />
-</a>
+<video width="100%" controls>
+  <source src="assets/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 🛠️ Tech Stack
 
