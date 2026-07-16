@@ -6,7 +6,7 @@ A robust, scalable, and data-driven mobile automation framework built for Androi
 ## 🎥 Project Demo
 
 <video width="100%" controls>
-  <source src="[https://github.com/Fawzy-qa/appium-java-testng-automation/raw/main/assets/demo.mp4](https://github.com/Fawzy-qa/appium-java-testng-automation/raw/main/assets/demo.mp4)" type="video/mp4">
+  <source src="https://github.com/Fawzy-qa/appium-java-testng-automation/blob/main/assets/demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 ## 🛠️ Tech Stack
