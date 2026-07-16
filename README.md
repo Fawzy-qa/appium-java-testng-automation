@@ -8,7 +8,7 @@ A robust, scalable, and data-driven mobile automation framework built for Androi
 * **Automation Engine:** Appium (Java Client v10.1.1) / UiAutomator2
 * **Testing Framework:** TestNG (v7.12.0)
 * **Build Tool:** Maven
-* **Reporting:** Allure (v2.35.2) + AspectJ Weaver
+* **Reporting:** Allure (v2.35.2) + AspectJ Weaver (to be added)
 * **Data Serialization:** GSON (v2.14.0)
 
 ## ✨ Key Features
