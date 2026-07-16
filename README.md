@@ -6,7 +6,7 @@ A robust, scalable, and data-driven mobile automation framework built for Androi
 ## 🎥 Project Demo
 
 <video width="100%" controls>
-  <source src="assets/demo.mp4" type="video/mp4">
+  <source src="assets/demo.mp4?raw=true" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
