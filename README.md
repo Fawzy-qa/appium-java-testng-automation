@@ -5,9 +5,10 @@ A robust, scalable, and data-driven mobile automation framework built for Androi
 
 ## 🎥 Project Demo
 
-Click the image below to watch the full automated test execution:
-
-[![Watch the Demo](https://img.youtube.com/vi/uCrsBr-eviQ/maxresdefault.jpg)](https://youtu.be/uCrsBr-eviQ)
+<video width="100%" controls>
+  <source src="https://res.cloudinary.com/t7m5yxob/video/upload/v1784247509/demo_run_zqzmjz.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 🛠️ Tech Stack
 
