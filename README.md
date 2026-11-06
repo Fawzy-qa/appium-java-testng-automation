@@ -1,6 +1,6 @@
 # Mobile Automation Framework
 
-A robust, scalable, and data-driven mobile automation framework built for Android applications using **Java**, **Appium**, and **TestNG**. This framework implements the **Page Object Model (POM)** design pattern and features comprehensive reporting via **Allure**.
+A robust, scalable, and data-driven mobile automation framework built for Android applications using **Java**, **Appium**, and **TestNG**. This framework implements the **Page Object Model (POM)** design pattern.
 
 
 ## 🎥 Project Demo
